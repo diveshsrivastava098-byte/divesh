@@ -700,46 +700,46 @@ typingEffect();
    VOICE INTRODUCTION
 ========================= */
 
-function speakIntro(){
+function speakIntro() {
 
     speechSynthesis.cancel();
 
     const message = `
     Hello and welcome to Divesh Srivastava's portfolio.
-
     My name is Divesh Srivastava.
-
     I am a BCA student at Accurate Institute of Management,
     Greater Noida, India.
-
     I am interested in Python, web development,
     programming and modern technology.
-
-    I am learning new skills and building creative projects.
-
     Thank you for visiting my portfolio.
-    Feel free to explore my skills and projects.
     `;
 
-    const speech =
-        new SpeechSynthesisUtterance(message);
+    const speech = new SpeechSynthesisUtterance(message);
 
     speech.lang = "en-IN";
-    speech.rate = 0.9;
-    speech.pitch = 1;
+    speech.rate = 0.88;
+    speech.pitch = 0.8;
     speech.volume = 1;
+
+    const voices = speechSynthesis.getVoices();
+
+    // Male voice select karne ki koshish
+    const maleVoice = voices.find(voice =>
+        /male|man|david|mark|ravi|rishi|hemant/i.test(voice.name)
+    );
+
+    if (maleVoice) {
+        speech.voice = maleVoice;
+    }
 
     speechSynthesis.speak(speech);
 }
 
-
-function stopVoice(){
-
+function stopVoice() {
     speechSynthesis.cancel();
-
 }
 
-
+    
 /* =========================
    3D MOUSE EFFECT
 ========================= */
