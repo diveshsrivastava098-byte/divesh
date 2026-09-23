@@ -1,0 +1,997 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Divesh Srivastava | 3D Portfolio</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#020617;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* ================= BACKGROUND ================= */
+
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-5;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#00e5ff;
+    opacity:.08;
+    filter:blur(130px);
+    top:-150px;
+    left:-150px;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:#7c3aed;
+    opacity:.10;
+    filter:blur(130px);
+    bottom:-150px;
+    right:-100px;
+    z-index:-2;
+}
+
+/* ================= NAVBAR ================= */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(2,6,23,.65);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    z-index:1000;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#00e5ff;
+    text-shadow:0 0 20px #00e5ff;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#00e5ff;
+    text-shadow:0 0 15px #00e5ff;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:120px 20px 60px;
+    perspective:1200px;
+}
+
+.hero-content{
+    transition:transform .15s ease;
+    transform-style:preserve-3d;
+}
+
+.profile-circle{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    margin:auto;
+    margin-bottom:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:50px;
+    font-weight:bold;
+    color:#00e5ff;
+    border:3px solid #00e5ff;
+    background:rgba(0,229,255,.08);
+    box-shadow:
+        0 0 20px #00e5ff,
+        0 0 70px rgba(0,229,255,.3);
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0) rotateY(0deg);
+    }
+    50%{
+        transform:translateY(-18px) rotateY(180deg);
+    }
+}
+
+.welcome{
+    color:#00e5ff;
+    letter-spacing:5px;
+    font-size:15px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,95px);
+    line-height:1;
+    margin-bottom:20px;
+    text-shadow:0 0 35px rgba(0,229,255,.25);
+}
+
+.hero h1 span{
+    color:#00e5ff;
+}
+
+.typing{
+    font-size:24px;
+    color:#b8c7d9;
+    min-height:35px;
+}
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:50px;
+    text-decoration:none;
+    color:white;
+    border:1px solid #00e5ff;
+    transition:.3s;
+}
+
+.btn.primary{
+    background:#00e5ff;
+    color:#001018;
+    font-weight:bold;
+    box-shadow:0 0 25px rgba(0,229,255,.4);
+}
+
+.btn:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 0 30px rgba(0,229,255,.5);
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+    padding:100px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:45px;
+    margin-bottom:55px;
+}
+
+.section-title span{
+    color:#00e5ff;
+}
+
+/* ================= ABOUT ================= */
+
+.about-container{
+    max-width:1000px;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+}
+
+.about-card{
+    padding:45px;
+    border-radius:25px;
+    background:linear-gradient(
+        145deg,
+        rgba(0,229,255,.08),
+        rgba(255,255,255,.03)
+    );
+    border:1px solid rgba(0,229,255,.25);
+    box-shadow:0 25px 70px rgba(0,0,0,.4);
+    transition:.4s;
+    transform-style:preserve-3d;
+}
+
+.about-card:hover{
+    transform:
+        perspective(1000px)
+        rotateX(5deg)
+        rotateY(-5deg)
+        translateY(-10px);
+}
+
+.about-card h3{
+    color:#00e5ff;
+    font-size:28px;
+    margin-bottom:20px;
+}
+
+.about-card p{
+    color:#c6d2df;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* ================= INFO ================= */
+
+.info-grid{
+    margin-top:30px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.info-box{
+    padding:20px;
+    border-radius:15px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.info-box strong{
+    color:#00e5ff;
+    display:block;
+    margin-bottom:8px;
+}
+
+/* ================= SKILLS ================= */
+
+.skills{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:25px;
+}
+
+.skill{
+    height:170px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:15px;
+    border-radius:20px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(0,229,255,.2);
+    transition:.4s;
+    transform-style:preserve-3d;
+}
+
+.skill:hover{
+    transform:
+        perspective(800px)
+        rotateX(8deg)
+        rotateY(-8deg)
+        translateY(-15px);
+    background:rgba(0,229,255,.08);
+    box-shadow:0 25px 50px rgba(0,229,255,.15);
+}
+
+.skill-icon{
+    font-size:45px;
+}
+
+.skill h3{
+    color:#dce9f5;
+}
+
+/* ================= PROJECTS ================= */
+
+.projects{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.project{
+    min-height:280px;
+    padding:30px;
+    border-radius:25px;
+    background:linear-gradient(
+        145deg,
+        rgba(255,255,255,.07),
+        rgba(255,255,255,.02)
+    );
+    border:1px solid rgba(0,229,255,.2);
+    transition:.4s;
+    transform-style:preserve-3d;
+}
+
+.project:hover{
+    transform:
+        perspective(900px)
+        rotateX(7deg)
+        rotateY(-7deg)
+        translateY(-12px);
+    box-shadow:0 30px 60px rgba(0,229,255,.15);
+}
+
+.project-icon{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.project h3{
+    color:#00e5ff;
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+.project p{
+    color:#b9c7d6;
+    line-height:1.7;
+}
+
+/* ================= CONTACT ================= */
+
+.contact-box{
+    max-width:850px;
+    margin:auto;
+    padding:50px;
+    text-align:center;
+    border-radius:25px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(0,229,255,.25);
+    box-shadow:0 25px 70px rgba(0,0,0,.3);
+}
+
+.contact-box p{
+    color:#c0ccda;
+    font-size:18px;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+.contact-buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    padding:30px;
+    text-align:center;
+    color:#8291a2;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* ================= ANIMATION ================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+    nav{
+        padding:16px 5%;
+    }
+
+    nav ul{
+        gap:10px;
+    }
+
+    nav ul li a{
+        font-size:12px;
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+
+    .typing{
+        font-size:18px;
+    }
+
+    section{
+        padding:80px 5%;
+    }
+
+    .section-title{
+        font-size:35px;
+    }
+
+    .about-card{
+        padding:25px;
+    }
+
+    .contact-box{
+        padding:30px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        DIVESH.
+    </div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content" id="heroContent">
+
+        <div class="profile-circle">
+            DS
+        </div>
+
+        <div class="welcome">
+            WELCOME TO MY PORTFOLIO
+        </div>
+
+        <h1>
+            I'm <span>Divesh</span>
+        </h1>
+
+        <div class="typing" id="typing"></div>
+
+        <div class="buttons">
+
+            <a href="#projects" class="btn primary">
+                View My Work
+            </a>
+
+            <a href="#contact" class="btn">
+                Contact Me
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="reveal">
+
+    <h2 class="section-title">
+        About <span>Me</span>
+    </h2>
+
+    <div class="about-container">
+
+        <div class="about-card">
+
+            <h3>Hello, I'm Divesh Srivastava 👋</h3>
+
+            <p>
+                I am a BCA student at
+                <b>Accurate Institute of Management,
+                Greater Noida, India.</b>
+            </p>
+
+            <br>
+
+            <p>
+                I am interested in programming, web development,
+                Python and modern technology. I enjoy learning
+                new skills and building creative projects.
+            </p>
+
+            <div class="info-grid">
+
+                <div class="info-box">
+                    <strong>Education</strong>
+                    BCA Student
+                </div>
+
+                <div class="info-box">
+                    <strong>College</strong>
+                    Accurate Institute of Management
+                </div>
+
+                <div class="info-box">
+                    <strong>Location</strong>
+                    Greater Noida, India
+                </div>
+
+                <div class="info-box">
+                    <strong>Career Goal</strong>
+                    Software Developer
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SKILLS ================= -->
+
+<section id="skills" class="reveal">
+
+    <h2 class="section-title">
+        My <span>Skills</span>
+    </h2>
+
+    <div class="skills">
+
+        <div class="skill">
+            <div class="skill-icon">🐍</div>
+            <h3>Python</h3>
+        </div>
+
+        <div class="skill">
+            <div class="skill-icon">🌐</div>
+            <h3>HTML</h3>
+        </div>
+
+        <div class="skill">
+            <div class="skill-icon">🎨</div>
+            <h3>CSS</h3>
+        </div>
+
+        <div class="skill">
+            <div class="skill-icon">⚡</div>
+            <h3>JavaScript</h3>
+        </div>
+
+        <div class="skill">
+            <div class="skill-icon">💻</div>
+            <h3>Web Development</h3>
+        </div>
+
+        <div class="skill">
+            <div class="skill-icon">🧠</div>
+            <h3>Problem Solving</h3>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROJECTS ================= -->
+
+<section id="projects" class="reveal">
+
+    <h2 class="section-title">
+        My <span>Projects</span>
+    </h2>
+
+    <div class="projects">
+
+        <div class="project">
+
+            <div class="project-icon">
+                🤖
+            </div>
+
+            <h3>Spide AI Assistant</h3>
+
+            <p>
+                A personal AI assistant project designed to
+                interact with users and perform useful tasks.
+            </p>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-icon">
+                🐍
+            </div>
+
+            <h3>Python Projects</h3>
+
+            <p>
+                Different beginner Python programs and
+                creative experiments developed while
+                learning programming.
+            </p>
+
+        </div>
+
+
+        <div class="project">
+
+            <div class="project-icon">
+                🌌
+            </div>
+
+            <h3>3D Portfolio</h3>
+
+            <p>
+                A modern personal portfolio website with
+                3D animations, interactive cards and
+                futuristic effects.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact" class="reveal">
+
+    <h2 class="section-title">
+        Contact <span>Me</span>
+    </h2>
+
+    <div class="contact-box">
+
+        <p>
+            Have a project idea or want to connect?
+            Feel free to contact me through email,
+            WhatsApp or Instagram.
+        </p>
+
+        <div class="contact-buttons">
+
+            <!-- EMAIL -->
+
+            <a
+                href="mailto:diveshsrivastava098@gmail.com"
+                class="btn primary">
+                📧 Email Me
+            </a>
+
+
+            <!-- WHATSAPP -->
+
+            <a
+                href="https://wa.me/918840728484"
+                target="_blank"
+                class="btn">
+                💬 WhatsApp
+            </a>
+
+
+            <!-- INSTAGRAM -->
+
+            <a
+                href="https://instagram.com/divuu.197_"
+                target="_blank"
+                class="btn">
+                📸 Instagram
+            </a>
+
+        </div>
+
+        <br><br>
+
+        <p>
+            <b>Email:</b>
+            diveshsrivastava098@gmail.com
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 Divesh Srivastava | 3D Portfolio
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   TYPING ANIMATION
+========================================= */
+
+const words = [
+    "BCA Student",
+    "Python Learner",
+    "Web Developer",
+    "Future Software Developer",
+    "Technology Enthusiast"
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+const typing = document.getElementById("typing");
+
+function typeEffect(){
+
+    const word = words[wordIndex];
+
+    if(!deleting){
+
+        typing.textContent =
+            word.substring(0,charIndex + 1);
+
+        charIndex++;
+
+        if(charIndex === word.length){
+
+            deleting = true;
+
+            setTimeout(typeEffect,1500);
+
+            return;
+        }
+
+    }else{
+
+        typing.textContent =
+            word.substring(0,charIndex - 1);
+
+        charIndex--;
+
+        if(charIndex === 0){
+
+            deleting = false;
+
+            wordIndex++;
+
+            if(wordIndex >= words.length){
+                wordIndex = 0;
+            }
+        }
+    }
+
+    setTimeout(
+        typeEffect,
+        deleting ? 50 : 100
+    );
+}
+
+typeEffect();
+
+
+/* =========================================
+   3D HERO MOUSE EFFECT
+========================================= */
+
+const hero =
+    document.querySelector(".hero");
+
+const heroContent =
+    document.getElementById("heroContent");
+
+hero.addEventListener("mousemove",(e)=>{
+
+    const x =
+        (window.innerWidth / 2 - e.clientX) / 30;
+
+    const y =
+        (window.innerHeight / 2 - e.clientY) / 30;
+
+    heroContent.style.transform =
+        `rotateY(${x}deg) rotateX(${y}deg)`;
+
+});
+
+hero.addEventListener("mouseleave",()=>{
+
+    heroContent.style.transform =
+        "rotateY(0deg) rotateX(0deg)";
+
+});
+
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+const reveals =
+    document.querySelectorAll(".reveal");
+
+function reveal(){
+
+    reveals.forEach(element=>{
+
+        const position =
+            element.getBoundingClientRect().top;
+
+        if(position <
+            window.innerHeight - 100){
+
+            element.classList.add("active");
+
+        }
+
+    });
+
+}
+
+window.addEventListener("scroll",reveal);
+
+reveal();
+
+
+/* =========================================
+   3D PARTICLES
+========================================= */
+
+const canvas =
+    document.getElementById("particles");
+
+const ctx =
+    canvas.getContext("2d");
+
+let particles = [];
+
+function resize(){
+
+    canvas.width =
+        window.innerWidth;
+
+    canvas.height =
+        window.innerHeight;
+
+}
+
+resize();
+
+window.addEventListener("resize",resize);
+
+
+/* CREATE PARTICLES */
+
+for(let i=0;i<120;i++){
+
+    particles.push({
+
+        x:Math.random()*window.innerWidth,
+
+        y:Math.random()*window.innerHeight,
+
+        size:Math.random()*2+0.5,
+
+        speedX:(Math.random()-0.5)*0.6,
+
+        speedY:(Math.random()-0.5)*0.6
+
+    });
+
+}
+
+
+/* ANIMATE */
+
+function animate(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    particles.forEach(p=>{
+
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if(p.x < 0 ||
+           p.x > canvas.width){
+
+            p.speedX *= -1;
+
+        }
+
+        if(p.y < 0 ||
+           p.y > canvas.height){
+
+            p.speedY *= -1;
+
+        }
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fillStyle =
+            "rgba(0,229,255,.7)";
+
+        ctx.fill();
+
+    });
+
+    requestAnimationFrame(animate);
+
+}
+
+animate();
+
+</script>
+
+</body>
+</html>
+```
