@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,29 +15,21 @@
 }
 
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#020617;
+    font-family:Arial, sans-serif;
+    background:#050816;
     color:white;
     overflow-x:hidden;
 }
 
-/* ================= BACKGROUND ================= */
-
-canvas{
-    position:fixed;
-    top:0;
-    left:0;
-    z-index:-5;
-}
-
+/* BACKGROUND */
 body::before{
     content:"";
     position:fixed;
     width:500px;
     height:500px;
     background:#00e5ff;
-    opacity:.08;
-    filter:blur(130px);
+    filter:blur(180px);
+    opacity:.18;
     top:-150px;
     left:-150px;
     z-index:-2;
@@ -47,30 +38,37 @@ body::before{
 body::after{
     content:"";
     position:fixed;
-    width:450px;
-    height:450px;
-    background:#7c3aed;
-    opacity:.10;
-    filter:blur(130px);
+    width:500px;
+    height:500px;
+    background:#8a2be2;
+    filter:blur(180px);
+    opacity:.18;
     bottom:-150px;
-    right:-100px;
+    right:-150px;
     z-index:-2;
 }
 
-/* ================= NAVBAR ================= */
-
-nav{
+/* PARTICLES */
+#particles{
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    padding:18px 7%;
+    height:100%;
+    z-index:-1;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:20px 8%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(2,6,23,.65);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(5,8,22,.75);
+    backdrop-filter:blur(15px);
     z-index:1000;
 }
 
@@ -78,99 +76,90 @@ nav{
     font-size:25px;
     font-weight:bold;
     color:#00e5ff;
-    text-shadow:0 0 20px #00e5ff;
 }
 
 nav ul{
     display:flex;
-    gap:30px;
+    gap:25px;
     list-style:none;
 }
 
 nav ul li a{
     color:white;
     text-decoration:none;
-    font-size:15px;
     transition:.3s;
 }
 
 nav ul li a:hover{
     color:#00e5ff;
-    text-shadow:0 0 15px #00e5ff;
 }
 
-/* ================= HERO ================= */
-
+/* HERO */
 .hero{
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:120px 20px 60px;
-    perspective:1200px;
+    padding:100px 20px;
 }
 
 .hero-content{
-    transition:transform .15s ease;
     transform-style:preserve-3d;
+    transition:.2s;
 }
 
-.profile-circle{
+.profile{
     width:150px;
     height:150px;
     border-radius:50%;
     margin:auto;
-    margin-bottom:30px;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     font-size:50px;
     font-weight:bold;
     color:#00e5ff;
     border:3px solid #00e5ff;
+    box-shadow:0 0 35px #00e5ff;
     background:rgba(0,229,255,.08);
-    box-shadow:
-        0 0 20px #00e5ff,
-        0 0 70px rgba(0,229,255,.3);
-    animation:float 4s ease-in-out infinite;
+    animation:float 3s ease-in-out infinite;
 }
 
 @keyframes float{
-    0%,100%{
-        transform:translateY(0) rotateY(0deg);
-    }
-    50%{
-        transform:translateY(-18px) rotateY(180deg);
-    }
-}
-
-.welcome{
-    color:#00e5ff;
-    letter-spacing:5px;
-    font-size:15px;
-    margin-bottom:15px;
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-15px)}
 }
 
 .hero h1{
-    font-size:clamp(45px,8vw,95px);
-    line-height:1;
-    margin-bottom:20px;
-    text-shadow:0 0 35px rgba(0,229,255,.25);
+    font-size:60px;
+    margin-top:30px;
 }
 
 .hero h1 span{
     color:#00e5ff;
+    text-shadow:0 0 20px #00e5ff;
 }
 
-.typing{
-    font-size:24px;
-    color:#b8c7d9;
-    min-height:35px;
+.hero h2{
+    margin:20px 0;
+    font-size:25px;
+    color:#ccc;
+}
+
+#typing{
+    color:#00e5ff;
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    line-height:1.7;
+    color:#bbb;
 }
 
 .buttons{
-    margin-top:35px;
+    margin-top:30px;
     display:flex;
     justify-content:center;
     gap:15px;
@@ -179,285 +168,198 @@ nav ul li a:hover{
 
 .btn{
     display:inline-block;
-    padding:14px 28px;
-    border-radius:50px;
-    text-decoration:none;
-    color:white;
+    padding:13px 25px;
     border:1px solid #00e5ff;
+    border-radius:30px;
+    color:#00e5ff;
+    text-decoration:none;
     transition:.3s;
-}
-
-.btn.primary{
-    background:#00e5ff;
-    color:#001018;
-    font-weight:bold;
-    box-shadow:0 0 25px rgba(0,229,255,.4);
+    background:rgba(0,229,255,.05);
+    cursor:pointer;
+    font-size:15px;
 }
 
 .btn:hover{
-    transform:translateY(-5px) scale(1.05);
-    box-shadow:0 0 30px rgba(0,229,255,.5);
+    background:#00e5ff;
+    color:#050816;
+    box-shadow:0 0 25px #00e5ff;
+    transform:translateY(-3px);
 }
 
-/* ================= SECTIONS ================= */
-
+/* SECTIONS */
 section{
     padding:100px 8%;
 }
 
 .section-title{
     text-align:center;
-    font-size:45px;
-    margin-bottom:55px;
-}
-
-.section-title span{
+    font-size:40px;
+    margin-bottom:50px;
     color:#00e5ff;
 }
 
-/* ================= ABOUT ================= */
-
-.about-container{
-    max-width:1000px;
+/* ABOUT */
+.about-box{
+    max-width:900px;
     margin:auto;
-    display:flex;
-    justify-content:center;
+    padding:40px;
+    border:1px solid rgba(0,229,255,.3);
+    border-radius:20px;
+    background:rgba(255,255,255,.04);
+    box-shadow:0 0 30px rgba(0,229,255,.08);
 }
 
-.about-card{
-    padding:45px;
-    border-radius:25px;
-    background:linear-gradient(
-        145deg,
-        rgba(0,229,255,.08),
-        rgba(255,255,255,.03)
-    );
-    border:1px solid rgba(0,229,255,.25);
-    box-shadow:0 25px 70px rgba(0,0,0,.4);
-    transition:.4s;
-    transform-style:preserve-3d;
-}
-
-.about-card:hover{
-    transform:
-        perspective(1000px)
-        rotateX(5deg)
-        rotateY(-5deg)
-        translateY(-10px);
-}
-
-.about-card h3{
-    color:#00e5ff;
+.about-box h3{
     font-size:28px;
     margin-bottom:20px;
 }
 
-.about-card p{
-    color:#c6d2df;
-    font-size:18px;
+.about-box p{
+    color:#bbb;
     line-height:1.8;
 }
 
-/* ================= INFO ================= */
-
-.info-grid{
+.info{
     margin-top:30px;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
 }
 
-.info-box{
+.info div{
     padding:20px;
     border-radius:15px;
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.08);
+    background:rgba(0,229,255,.05);
+    border:1px solid rgba(0,229,255,.2);
 }
 
-.info-box strong{
+.info b{
     color:#00e5ff;
-    display:block;
-    margin-bottom:8px;
 }
 
-/* ================= SKILLS ================= */
-
+/* SKILLS */
 .skills{
-    max-width:1100px;
-    margin:auto;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:25px;
+    gap:20px;
+    max-width:1000px;
+    margin:auto;
 }
 
 .skill{
-    height:170px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
-    gap:15px;
+    padding:30px;
+    text-align:center;
+    border:1px solid rgba(0,229,255,.25);
     border-radius:20px;
     background:rgba(255,255,255,.04);
-    border:1px solid rgba(0,229,255,.2);
     transition:.4s;
-    transform-style:preserve-3d;
 }
 
 .skill:hover{
-    transform:
-        perspective(800px)
-        rotateX(8deg)
-        rotateY(-8deg)
-        translateY(-15px);
-    background:rgba(0,229,255,.08);
-    box-shadow:0 25px 50px rgba(0,229,255,.15);
-}
-
-.skill-icon{
-    font-size:45px;
+    transform:translateY(-10px) rotateX(8deg);
+    box-shadow:0 0 25px rgba(0,229,255,.4);
 }
 
 .skill h3{
-    color:#dce9f5;
+    color:#00e5ff;
 }
 
-/* ================= PROJECTS ================= */
-
+/* PROJECTS */
 .projects{
-    max-width:1100px;
-    margin:auto;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    max-width:1000px;
+    margin:auto;
 }
 
 .project{
-    min-height:280px;
     padding:30px;
-    border-radius:25px;
-    background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.07),
-        rgba(255,255,255,.02)
-    );
-    border:1px solid rgba(0,229,255,.2);
+    min-height:220px;
+    border-radius:20px;
+    border:1px solid rgba(138,43,226,.4);
+    background:rgba(255,255,255,.04);
     transition:.4s;
-    transform-style:preserve-3d;
 }
 
 .project:hover{
-    transform:
-        perspective(900px)
-        rotateX(7deg)
-        rotateY(-7deg)
-        translateY(-12px);
-    box-shadow:0 30px 60px rgba(0,229,255,.15);
-}
-
-.project-icon{
-    font-size:45px;
-    margin-bottom:20px;
+    transform:perspective(700px) rotateY(8deg) translateY(-10px);
+    box-shadow:0 0 30px rgba(138,43,226,.4);
 }
 
 .project h3{
     color:#00e5ff;
-    font-size:24px;
     margin-bottom:15px;
 }
 
 .project p{
-    color:#b9c7d6;
-    line-height:1.7;
+    color:#bbb;
+    line-height:1.6;
 }
 
-/* ================= CONTACT ================= */
+/* CONTACT */
+.contact{
+    text-align:center;
+}
 
 .contact-box{
-    max-width:850px;
+    max-width:700px;
     margin:auto;
-    padding:50px;
-    text-align:center;
-    border-radius:25px;
+    padding:40px;
+    border-radius:20px;
     background:rgba(255,255,255,.04);
     border:1px solid rgba(0,229,255,.25);
-    box-shadow:0 25px 70px rgba(0,0,0,.3);
 }
 
 .contact-box p{
-    color:#c0ccda;
-    font-size:18px;
-    line-height:1.7;
-    margin-bottom:30px;
+    margin:18px;
+    color:#ccc;
 }
 
-.contact-buttons{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:15px;
+.contact-box a{
+    color:#00e5ff;
+    text-decoration:none;
 }
 
-/* ================= FOOTER ================= */
-
+/* FOOTER */
 footer{
-    padding:30px;
     text-align:center;
-    color:#8291a2;
-    border-top:1px solid rgba(255,255,255,.08);
+    padding:30px;
+    border-top:1px solid rgba(255,255,255,.1);
+    color:#aaa;
 }
 
-/* ================= ANIMATION ================= */
-
-.reveal{
-    opacity:0;
-    transform:translateY(60px);
-    transition:1s;
-}
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* ================= MOBILE ================= */
-
+/* MOBILE */
 @media(max-width:700px){
 
     nav{
-        padding:16px 5%;
+        padding:15px 5%;
     }
 
     nav ul{
-        gap:10px;
-    }
-
-    nav ul li a{
-        font-size:12px;
+        display:none;
     }
 
     .hero h1{
-        font-size:50px;
+        font-size:42px;
     }
 
-    .typing{
-        font-size:18px;
+    .hero h2{
+        font-size:20px;
     }
 
-    section{
-        padding:80px 5%;
+    .profile{
+        width:120px;
+        height:120px;
+        font-size:40px;
+    }
+
+    .info{
+        grid-template-columns:1fr;
     }
 
     .section-title{
-        font-size:35px;
-    }
-
-    .about-card{
-        padding:25px;
-    }
-
-    .contact-box{
-        padding:30px 20px;
+        font-size:32px;
     }
 }
 </style>
@@ -467,13 +369,9 @@ footer{
 
 <canvas id="particles"></canvas>
 
-<!-- ================= NAVBAR ================= -->
-
+<!-- NAVBAR -->
 <nav>
-
-    <div class="logo">
-        DIVESH.
-    </div>
+    <div class="logo">DS.</div>
 
     <ul>
         <li><a href="#home">Home</a></li>
@@ -482,39 +380,52 @@ footer{
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
-
 </nav>
 
 
-<!-- ================= HERO ================= -->
-
+<!-- HERO -->
 <section class="hero" id="home">
 
     <div class="hero-content" id="heroContent">
 
-        <div class="profile-circle">
-            DS
-        </div>
+        <div class="profile">DS</div>
 
-        <div class="welcome">
+        <p style="margin-top:25px;color:#00e5ff;">
             WELCOME TO MY PORTFOLIO
-        </div>
+        </p>
 
         <h1>
             I'm <span>Divesh</span>
         </h1>
 
-        <div class="typing" id="typing"></div>
+        <h2>
+            <span id="typing"></span>
+        </h2>
+
+        <p>
+            Hello! I'm Divesh Srivastava, a BCA student at
+            Accurate Institute of Management, Greater Noida, India.
+            I love programming, Python, web development and
+            modern technology.
+        </p>
 
         <div class="buttons">
 
-            <a href="#projects" class="btn primary">
-                View My Work
+            <a href="#projects" class="btn">
+                🚀 View Projects
             </a>
 
             <a href="#contact" class="btn">
-                Contact Me
+                📩 Contact Me
             </a>
+
+            <button class="btn" onclick="speakIntro()">
+                🔊 Hear My Introduction
+            </button>
+
+            <button class="btn" onclick="stopVoice()">
+                ⏹ Stop Voice
+            </button>
 
         </div>
 
@@ -523,56 +434,42 @@ footer{
 </section>
 
 
-<!-- ================= ABOUT ================= -->
+<!-- ABOUT -->
+<section id="about">
 
-<section id="about" class="reveal">
+    <h2 class="section-title">About Me</h2>
 
-    <h2 class="section-title">
-        About <span>Me</span>
-    </h2>
+    <div class="about-box">
 
-    <div class="about-container">
+        <h3>Hello, I'm Divesh Srivastava 👋</h3>
 
-        <div class="about-card">
+        <p>
+            I am a BCA student at Accurate Institute of Management,
+            Greater Noida, India. I am interested in programming,
+            web development, Python and modern technology.
+            I enjoy learning new skills and creating creative projects.
+        </p>
 
-            <h3>Hello, I'm Divesh Srivastava 👋</h3>
+        <div class="info">
 
-            <p>
-                I am a BCA student at
-                <b>Accurate Institute of Management,
-                Greater Noida, India.</b>
-            </p>
+            <div>
+                <b>🎓 Education</b><br>
+                BCA Student
+            </div>
 
-            <br>
+            <div>
+                <b>🏫 College</b><br>
+                Accurate Institute of Management
+            </div>
 
-            <p>
-                I am interested in programming, web development,
-                Python and modern technology. I enjoy learning
-                new skills and building creative projects.
-            </p>
+            <div>
+                <b>📍 Location</b><br>
+                Greater Noida, India
+            </div>
 
-            <div class="info-grid">
-
-                <div class="info-box">
-                    <strong>Education</strong>
-                    BCA Student
-                </div>
-
-                <div class="info-box">
-                    <strong>College</strong>
-                    Accurate Institute of Management
-                </div>
-
-                <div class="info-box">
-                    <strong>Location</strong>
-                    Greater Noida, India
-                </div>
-
-                <div class="info-box">
-                    <strong>Career Goal</strong>
-                    Software Developer
-                </div>
-
+            <div>
+                <b>💻 Career Goal</b><br>
+                Software Developer
             </div>
 
         </div>
@@ -582,44 +479,41 @@ footer{
 </section>
 
 
-<!-- ================= SKILLS ================= -->
+<!-- SKILLS -->
+<section id="skills">
 
-<section id="skills" class="reveal">
-
-    <h2 class="section-title">
-        My <span>Skills</span>
-    </h2>
+    <h2 class="section-title">My Skills</h2>
 
     <div class="skills">
 
         <div class="skill">
-            <div class="skill-icon">🐍</div>
-            <h3>Python</h3>
+            <h3>🐍 Python</h3>
+            <p>Programming & Projects</p>
         </div>
 
         <div class="skill">
-            <div class="skill-icon">🌐</div>
-            <h3>HTML</h3>
+            <h3>🌐 HTML</h3>
+            <p>Website Structure</p>
         </div>
 
         <div class="skill">
-            <div class="skill-icon">🎨</div>
-            <h3>CSS</h3>
+            <h3>🎨 CSS</h3>
+            <p>Website Design</p>
         </div>
 
         <div class="skill">
-            <div class="skill-icon">⚡</div>
-            <h3>JavaScript</h3>
+            <h3>⚡ JavaScript</h3>
+            <p>Web Interactions</p>
         </div>
 
         <div class="skill">
-            <div class="skill-icon">💻</div>
-            <h3>Web Development</h3>
+            <h3>💻 Web Development</h3>
+            <p>Modern Websites</p>
         </div>
 
         <div class="skill">
-            <div class="skill-icon">🧠</div>
-            <h3>Problem Solving</h3>
+            <h3>🧠 Problem Solving</h3>
+            <p>Logical Thinking</p>
         </div>
 
     </div>
@@ -627,27 +521,21 @@ footer{
 </section>
 
 
-<!-- ================= PROJECTS ================= -->
+<!-- PROJECTS -->
+<section id="projects">
 
-<section id="projects" class="reveal">
-
-    <h2 class="section-title">
-        My <span>Projects</span>
-    </h2>
+    <h2 class="section-title">My Projects</h2>
 
     <div class="projects">
 
         <div class="project">
 
-            <div class="project-icon">
-                🤖
-            </div>
-
-            <h3>Spide AI Assistant</h3>
+            <h3>🤖 Spide AI Assistant</h3>
 
             <p>
-                A personal AI assistant project designed to
-                interact with users and perform useful tasks.
+                A beginner-friendly AI PC assistant project
+                designed to provide information and help with
+                computer-related tasks.
             </p>
 
         </div>
@@ -655,16 +543,12 @@ footer{
 
         <div class="project">
 
-            <div class="project-icon">
-                🐍
-            </div>
-
-            <h3>Python Projects</h3>
+            <h3>🐍 Python Projects</h3>
 
             <p>
-                Different beginner Python programs and
-                creative experiments developed while
-                learning programming.
+                Various Python practice projects including
+                calculations, loops, functions and creative
+                programming projects.
             </p>
 
         </div>
@@ -672,16 +556,11 @@ footer{
 
         <div class="project">
 
-            <div class="project-icon">
-                🌌
-            </div>
-
-            <h3>3D Portfolio</h3>
+            <h3>🌌 3D Portfolio</h3>
 
             <p>
-                A modern personal portfolio website with
-                3D animations, interactive cards and
-                futuristic effects.
+                This modern 3D portfolio website with animations,
+                glowing effects and interactive elements.
             </p>
 
         </div>
@@ -691,80 +570,71 @@ footer{
 </section>
 
 
-<!-- ================= CONTACT ================= -->
+<!-- CONTACT -->
+<section id="contact">
 
-<section id="contact" class="reveal">
-
-    <h2 class="section-title">
-        Contact <span>Me</span>
-    </h2>
+    <h2 class="section-title">Contact Me</h2>
 
     <div class="contact-box">
 
         <p>
-            Have a project idea or want to connect?
-            Feel free to contact me through email,
-            WhatsApp or Instagram.
+            📧 Email:
+            <a href="mailto:diveshsrivastava098@gmail.com">
+                diveshsrivastava098@gmail.com
+            </a>
         </p>
 
-        <div class="contact-buttons">
+        <p>
+            📱 WhatsApp:
+            <a href="https://wa.me/918840728484" target="_blank">
+                8840728484
+            </a>
+        </p>
 
-            <!-- EMAIL -->
+        <p>
+            📸 Instagram:
+            <a href="https://instagram.com/divuu.197_" target="_blank">
+                @divuu.197_
+            </a>
+        </p>
 
-            <a
-                href="mailto:diveshsrivastava098@gmail.com"
-                class="btn primary">
+        <div class="buttons">
+
+            <a class="btn"
+               href="mailto:diveshsrivastava098@gmail.com">
                 📧 Email Me
             </a>
 
-
-            <!-- WHATSAPP -->
-
-            <a
-                href="https://wa.me/918840728484"
-                target="_blank"
-                class="btn">
+            <a class="btn"
+               href="https://wa.me/918840728484"
+               target="_blank">
                 💬 WhatsApp
             </a>
 
-
-            <!-- INSTAGRAM -->
-
-            <a
-                href="https://instagram.com/divuu.197_"
-                target="_blank"
-                class="btn">
+            <a class="btn"
+               href="https://instagram.com/divuu.197_"
+               target="_blank">
                 📸 Instagram
             </a>
 
         </div>
 
-        <br><br>
-
-        <p>
-            <b>Email:</b>
-            diveshsrivastava098@gmail.com
-        </p>
-
     </div>
 
 </section>
 
 
-<!-- ================= FOOTER ================= -->
-
+<!-- FOOTER -->
 <footer>
-
     © 2026 Divesh Srivastava | 3D Portfolio
-
 </footer>
 
 
 <script>
 
-/* =========================================
+/* =========================
    TYPING ANIMATION
-========================================= */
+========================= */
 
 const words = [
     "BCA Student",
@@ -778,32 +648,30 @@ let wordIndex = 0;
 let charIndex = 0;
 let deleting = false;
 
-const typing = document.getElementById("typing");
+function typingEffect(){
 
-function typeEffect(){
-
-    const word = words[wordIndex];
+    const typing = document.getElementById("typing");
+    const currentWord = words[wordIndex];
 
     if(!deleting){
 
         typing.textContent =
-            word.substring(0,charIndex + 1);
+            currentWord.substring(0,charIndex + 1);
 
         charIndex++;
 
-        if(charIndex === word.length){
+        if(charIndex === currentWord.length){
 
             deleting = true;
 
-            setTimeout(typeEffect,1500);
-
+            setTimeout(typingEffect,1200);
             return;
         }
 
     }else{
 
         typing.textContent =
-            word.substring(0,charIndex - 1);
+            currentWord.substring(0,charIndex - 1);
 
         charIndex--;
 
@@ -813,85 +681,89 @@ function typeEffect(){
 
             wordIndex++;
 
-            if(wordIndex >= words.length){
+            if(wordIndex === words.length){
                 wordIndex = 0;
             }
         }
     }
 
     setTimeout(
-        typeEffect,
+        typingEffect,
         deleting ? 50 : 100
     );
 }
 
-typeEffect();
+typingEffect();
 
 
-/* =========================================
-   3D HERO MOUSE EFFECT
-========================================= */
+/* =========================
+   VOICE INTRODUCTION
+========================= */
 
-const hero =
-    document.querySelector(".hero");
+function speakIntro(){
+
+    speechSynthesis.cancel();
+
+    const message = `
+    Hello and welcome to Divesh Srivastava's portfolio.
+
+    My name is Divesh Srivastava.
+
+    I am a BCA student at Accurate Institute of Management,
+    Greater Noida, India.
+
+    I am interested in Python, web development,
+    programming and modern technology.
+
+    I am learning new skills and building creative projects.
+
+    Thank you for visiting my portfolio.
+    Feel free to explore my skills and projects.
+    `;
+
+    const speech =
+        new SpeechSynthesisUtterance(message);
+
+    speech.lang = "en-IN";
+    speech.rate = 0.9;
+    speech.pitch = 1;
+    speech.volume = 1;
+
+    speechSynthesis.speak(speech);
+}
+
+
+function stopVoice(){
+
+    speechSynthesis.cancel();
+
+}
+
+
+/* =========================
+   3D MOUSE EFFECT
+========================= */
 
 const heroContent =
     document.getElementById("heroContent");
 
-hero.addEventListener("mousemove",(e)=>{
+document.addEventListener("mousemove", function(e){
 
     const x =
-        (window.innerWidth / 2 - e.clientX) / 30;
+        (window.innerWidth / 2 - e.clientX) / 35;
 
     const y =
-        (window.innerHeight / 2 - e.clientY) / 30;
+        (window.innerHeight / 2 - e.clientY) / 35;
 
     heroContent.style.transform =
         `rotateY(${x}deg) rotateX(${y}deg)`;
 
 });
 
-hero.addEventListener("mouseleave",()=>{
 
-    heroContent.style.transform =
-        "rotateY(0deg) rotateX(0deg)";
-
-});
-
-
-/* =========================================
-   SCROLL REVEAL
-========================================= */
-
-const reveals =
-    document.querySelectorAll(".reveal");
-
-function reveal(){
-
-    reveals.forEach(element=>{
-
-        const position =
-            element.getBoundingClientRect().top;
-
-        if(position <
-            window.innerHeight - 100){
-
-            element.classList.add("active");
-
-        }
-
-    });
-
-}
-
-window.addEventListener("scroll",reveal);
-
-reveal();
-
-
-/* =========================================
-   3D PARTICLES
-========================================= */
+/* =========================
+   PARTICLE BACKGROUND
+========================= */
 
 const canvas =
     document.getElementById("particles");
@@ -899,47 +771,31 @@ const canvas =
 const ctx =
     canvas.getContext("2d");
 
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 let particles = [];
 
-function resize(){
-
-    canvas.width =
-        window.innerWidth;
-
-    canvas.height =
-        window.innerHeight;
-
-}
-
-resize();
-
-window.addEventListener("resize",resize);
-
-
-/* CREATE PARTICLES */
-
-for(let i=0;i<120;i++){
+for(let i = 0; i < 120; i++){
 
     particles.push({
 
-        x:Math.random()*window.innerWidth,
+        x:Math.random() * canvas.width,
 
-        y:Math.random()*window.innerHeight,
+        y:Math.random() * canvas.height,
 
-        size:Math.random()*2+0.5,
+        size:Math.random() * 2 + 1,
 
-        speedX:(Math.random()-0.5)*0.6,
+        speedX:(Math.random() - .5) * .5,
 
-        speedY:(Math.random()-0.5)*0.6
+        speedY:(Math.random() - .5) * .5
 
     });
 
 }
 
 
-/* ANIMATE */
-
-function animate(){
+function animateParticles(){
 
     ctx.clearRect(
         0,
@@ -948,23 +804,17 @@ function animate(){
         canvas.height
     );
 
-    particles.forEach(p=>{
+    particles.forEach(p => {
 
         p.x += p.speedX;
         p.y += p.speedY;
 
-        if(p.x < 0 ||
-           p.x > canvas.width){
-
+        if(p.x < 0 || p.x > canvas.width){
             p.speedX *= -1;
-
         }
 
-        if(p.y < 0 ||
-           p.y > canvas.height){
-
+        if(p.y < 0 || p.y > canvas.height){
             p.speedY *= -1;
-
         }
 
         ctx.beginPath();
@@ -977,21 +827,28 @@ function animate(){
             Math.PI * 2
         );
 
-        ctx.fillStyle =
-            "rgba(0,229,255,.7)";
+        ctx.fillStyle = "#00e5ff";
 
         ctx.fill();
 
     });
 
-    requestAnimationFrame(animate);
-
+    requestAnimationFrame(animateParticles);
 }
 
-animate();
+animateParticles();
+
+
+/* RESIZE */
+
+window.addEventListener("resize", function(){
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+});
 
 </script>
 
 </body>
 </html>
-```
